@@ -1,0 +1,15 @@
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\bin\Debug\net6.0\Proxified_Connector.exe
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\bin\Debug\net6.0\Proxified_Connector.deps.json
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\bin\Debug\net6.0\Proxified_Connector.runtimeconfig.json
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\bin\Debug\net6.0\Proxified_Connector.dll
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\bin\Debug\net6.0\Proxified_Connector.pdb
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\Proxified_Connector.csproj.AssemblyReference.cache
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\Proxified_Connector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\Proxified_Connector.AssemblyInfoInputs.cache
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\Proxified_Connector.AssemblyInfo.cs
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\Proxified_Connector.csproj.CoreCompileInputs.cache
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\Proxified_Connector.dll
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\refint\Proxified_Connector.dll
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\Proxified_Connector.pdb
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\Proxified_Connector.genruntimeconfig.cache
+C:\Users\u\source\Commercial_Repositories\Proxified_Connector\obj\Debug\net6.0\ref\Proxified_Connector.dll
