@@ -32,6 +32,17 @@ namespace Proxified_Connector
             // TAKES DRIVER INFORMATION
             DriveInfo[] allDrives = DriveInfo.GetDrives();
 
+            // LOGO OF PROGRAM
+            Console.WriteLine(@"|###########################################################################################|");
+            Console.WriteLine(@"|    __   __   __         ___    ___  __      __   __             ___  __  ___  __   __     |");
+            Console.WriteLine(@"|   |__) |__) /  \ \_/ | |__  | |__  |  \    /  ` /  \ |\ | |\ | |__  /  `  |  /  \ |__)    |");
+            Console.WriteLine(@"|   |    |  \ \__/ / \ | |    | |___ |__/    \__, \__/ | \| | \| |___ \__,  |  \__/ |  \    |");
+            Console.WriteLine(@"|                                                                                           |");
+            Console.WriteLine(@"|###########################################################################################|");
+
+            // LINE SPACE
+            Space();
+
             // WRITES DRIVERS
             foreach (DriveInfo d in allDrives)
             {
