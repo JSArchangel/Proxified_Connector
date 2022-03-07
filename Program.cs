@@ -6,12 +6,28 @@ namespace Proxified_Connector
     {
         static void Main(string[] args)
         {
+            // PROXY LIST VARIABLES
+            string[] proxyListItems;
+            int proxyListLine = 0;
+            string proxyListPath = string.Empty;
+            bool isProxyFound = false;
+            string proxyItemAccessor = string.Empty;
+            int proxyItemReader = 0;
+            string proxyConnectionString = string.Empty;
+
+            // PROXY IP & PORT
+            string proxyIP = string.Empty;
+            string proxyPort = string.Empty;
+
             // DRIVE VARIABLES
             string[] driveArray = new string[50];
             string driveNames = String.Empty;
             string selectedDrive = String.Empty;
             int driveIndex = 0;
             bool isDriveValid = false;
+
+            // PROXY CHANGE SYSTEM
+            RegistryKey registryKey;
 
             // TAKES DRIVER INFORMATION
             DriveInfo[] allDrives = DriveInfo.GetDrives();
@@ -58,12 +74,20 @@ namespace Proxified_Connector
                 }
             } while (!isDriveValid);
 
-            if (File.Exists(selectedDrive + @"\Proxified\Proxylist.txt"))
+            proxyListPath = selectedDrive + @"\Proxified\Proxylist.txt";
+
+            if (File.Exists(proxyListPath))
             {
                 // INFORMATION LOG
                 Console.WriteLine("|######################################|");
                 Console.WriteLine("|         Proxified List Found         |");
                 Console.WriteLine("|######################################|");
+
+                // SETS BOOL
+                isProxyFound = true;
+
+                // LINE SPACE
+                Space();
             }
             else
             {
@@ -71,6 +95,72 @@ namespace Proxified_Connector
                 Console.WriteLine("|######################################|");
                 Console.WriteLine("|       Proxified List Not Found       |");
                 Console.WriteLine("|######################################|");
+
+                // SETS BOOL
+                isProxyFound = false;
+
+                // LINE SPACE
+                Space();
+            }
+
+            // SETS THE PROXY LIST LINES
+            proxyListItems = File.ReadAllLines(proxyListPath);
+
+            // SETS THE PROXYLIST PROXY QUANTITY
+            proxyListLine = File.ReadAllLines(proxyListPath).Length;
+
+            if (isProxyFound)
+            {
+                //  PROXY LINES
+                for (int i = 0; i < proxyListLine; i++)
+                {
+                    // SETS THE PROXY LINES ONE BY ONE
+                    proxyItemAccessor = proxyListItems[i];
+
+                    // READ IP ADDRESS
+                    while (proxyItemAccessor[proxyItemReader].ToString() != "#")
+                    {
+                        proxyIP += proxyItemAccessor[proxyItemReader];
+                        proxyItemReader++;
+                    }
+
+                    // INCREASES FOR PORT 
+                    proxyItemReader++;
+
+                    // READ PORT
+                    while (proxyItemAccessor[proxyItemReader] != '#')
+                    {
+                        proxyPort += proxyItemAccessor[proxyItemReader];
+                        proxyItemReader++;
+                    }
+
+                    // CONNECTS TO A PROXY
+                    registryKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+                    proxyConnectionString = proxyIP + ":" + proxyPort;
+                    registryKey.SetValue("ProxyEnable", 1);
+                    registryKey.SetValue("ProxyServer", proxyConnectionString);
+
+                    // INFORMATION LOG
+                    Console.WriteLine("|######################################|");
+                    Console.WriteLine("|      Connected To A New Location     |");
+                    Console.WriteLine("|######################################|");
+
+                    // LINE SPACE
+                    Space();
+
+                    Console.WriteLine($"- {proxyConnectionString}");
+
+                    // LINE SPACE
+                    Space();
+
+                    // EMPTIFY IP & PROXY
+                    proxyItemReader = 0;
+                    proxyIP = string.Empty;
+                    proxyPort = string.Empty;
+
+                    // WAITS FOR PROXYCHANGE
+                    Thread.Sleep(45000);
+                }
             }
 
             Console.ReadLine();
