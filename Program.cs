@@ -14,9 +14,6 @@ namespace Proxified_Connector
             int proxyListLine = 0;
             string proxyListPath = string.Empty;
             bool isProxyFound = false;
-            string proxyItemAccessor = string.Empty;
-            int proxyItemReader = 0;
-            string proxyConnectionString = string.Empty;
 
             // PROXY IP & PORT
             string proxyIP = string.Empty;
@@ -128,31 +125,10 @@ namespace Proxified_Connector
                 //  PROXY LINES
                 for (int i = 0; i < proxyListLine; i++)
                 {
-                    // SETS THE PROXY LINES ONE BY ONE
-                    proxyItemAccessor = proxyListItems[i];
-
-                    // READ IP ADDRESS
-                    while (proxyItemAccessor[proxyItemReader].ToString() != "#")
-                    {
-                        proxyIP += proxyItemAccessor[proxyItemReader];
-                        proxyItemReader++;
-                    }
-
-                    // INCREASES FOR PORT 
-                    proxyItemReader++;
-
-                    // READ PORT
-                    while (proxyItemAccessor[proxyItemReader] != '#')
-                    {
-                        proxyPort += proxyItemAccessor[proxyItemReader];
-                        proxyItemReader++;
-                    }
-
                     // CONNECTS TO A PROXY
                     registryKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
-                    proxyConnectionString = proxyIP + ":" + proxyPort;
                     registryKey.SetValue("ProxyEnable", 1);
-                    registryKey.SetValue("ProxyServer", proxyConnectionString);
+                    registryKey.SetValue("ProxyServer", proxyListItems[i]);
 
                     // INFORMATION LOG
                     Console.WriteLine("|######################################|");
@@ -162,15 +138,10 @@ namespace Proxified_Connector
                     // LINE SPACE
                     Space();
 
-                    Console.WriteLine($"- {proxyConnectionString}");
+                    Console.WriteLine($"- {proxyListItems[i]}");
 
                     // LINE SPACE
                     Space();
-
-                    // EMPTIFY IP & PROXY
-                    proxyItemReader = 0;
-                    proxyIP = string.Empty;
-                    proxyPort = string.Empty;
 
                     // WAITS FOR PROXYCHANGE
                     Thread.Sleep(45000);
