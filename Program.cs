@@ -6,6 +6,9 @@ namespace Proxified_Connector
     {
         static void Main(string[] args)
         {
+            // CONSOLE OPTIONS
+            Console.Title = "Proxified Connector";
+
             // PROXY LIST VARIABLES
             string[] proxyListItems;
             int proxyListLine = 0;
